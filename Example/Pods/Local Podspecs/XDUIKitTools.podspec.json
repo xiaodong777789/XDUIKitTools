@@ -18,5 +18,10 @@
   "platforms": {
     "ios": "12.0"
   },
-  "source_files": "XDUIKitTools/Classes/**/*"
+  "source_files": "XDUIKitTools/Classes/**/*",
+  "dependencies": {
+    "Masonry": [
+
+    ]
+  }
 }

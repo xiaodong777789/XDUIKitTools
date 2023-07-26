@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#if __has_include(<Masonry/Masonry.h>)
+#import <Masonry/Masonry.h>
+#endif
 @interface UIView (DSL)
 
 ///添加约束后，需要自身frame计算时需要延迟调用可以再after内调用

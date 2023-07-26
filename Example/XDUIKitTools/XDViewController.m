@@ -23,7 +23,10 @@
     
     temp.setFrame(CGRectMake(0, 0, 100, 100)).setBackgroundColor(UIColor.randomColor);
     
-    temp.setOrigin(CGPointMake(100, 100));
+    temp.setOrigin(CGPointMake(100, 100)).setCornerRadius(10).setClipsToBounds(YES).makeConstraint(^(MASConstraintMaker *make) {
+        make.center.equalToSuperview();
+        make.size.mas_equalTo(CGSizeMake(200, 200));
+    });
 }
 
 - (void)didReceiveMemoryWarning

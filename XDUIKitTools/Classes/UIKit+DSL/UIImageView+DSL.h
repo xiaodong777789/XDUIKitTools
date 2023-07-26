@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#if __has_include(<Masonry/Masonry.h>)
+#import <Masonry/Masonry.h>
+#endif
 @interface UIImageView (DSL)
 
 ///------------父类属性-----------

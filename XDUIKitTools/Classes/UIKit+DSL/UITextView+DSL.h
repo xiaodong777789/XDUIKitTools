@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#if __has_include(<Masonry/Masonry.h>)
+#import <Masonry/Masonry.h>
+#endif
 @interface UITextView (DSL)
 ///------------父类属性-----------
 @property (nonatomic,readonly) UITextView *(^after)(void (^)(UITextView *textView));

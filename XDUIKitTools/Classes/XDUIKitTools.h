@@ -20,11 +20,6 @@
 #define var __auto_type
 #endif
 
-#if __has_include(<Masonry/Masonry.h>)
-#import <Masonry/Masonry.h>
-#endif
-
-
 #import "UIView+Util.h"
 #import "UIColor+Util.h"
 #import "UIImage+Util.h"
