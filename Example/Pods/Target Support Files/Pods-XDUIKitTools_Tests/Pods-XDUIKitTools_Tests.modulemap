@@ -1,0 +1,6 @@
+framework module Pods_XDUIKitTools_Tests {
+  umbrella header "Pods-XDUIKitTools_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

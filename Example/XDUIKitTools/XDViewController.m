@@ -7,7 +7,7 @@
 //
 
 #import "XDViewController.h"
-
+#import <XDUIKitTools/XDUIKitTools.h>
 @interface XDViewController ()
 
 @end
@@ -18,6 +18,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    let temp = self.view.addSubView(UIView.class);
+    
+    temp.setFrame(CGRectMake(0, 0, 100, 100)).setBackgroundColor(UIColor.randomColor);
+    
 }
 
 - (void)didReceiveMemoryWarning

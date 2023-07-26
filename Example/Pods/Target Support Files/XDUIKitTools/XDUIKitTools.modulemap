@@ -1,0 +1,6 @@
+framework module XDUIKitTools {
+  umbrella header "XDUIKitTools-umbrella.h"
+
+  export *
+  module * { export * }
+}
