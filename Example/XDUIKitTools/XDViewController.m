@@ -23,6 +23,7 @@
     
     temp.setFrame(CGRectMake(0, 0, 100, 100)).setBackgroundColor(UIColor.randomColor);
     
+    temp.setOrigin(CGPointMake(100, 100));
 }
 
 - (void)didReceiveMemoryWarning
