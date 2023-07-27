@@ -6,9 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (DSL)
@@ -45,11 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,readonly) UITableView *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UITableView *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UITableView *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UITableView *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UITableView *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///-----------UIScrollView------------
 @property (nonatomic,readonly) UITableView *(^setContentOffset)(CGPoint);

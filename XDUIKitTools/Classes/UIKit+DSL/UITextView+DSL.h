@@ -6,9 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
 @interface UITextView (DSL)
 ///------------父类属性-----------
 @property (nonatomic,readonly) UITextView *(^after)(void (^)(UITextView *textView));
@@ -43,11 +41,9 @@
 @property (nonatomic,readonly) UITextView *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UITextView *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UITextView *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UITextView *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UITextView *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///-----------UIScrollView------------
 @property (nonatomic,readonly) UITextView *(^setContentOffset)(CGPoint);

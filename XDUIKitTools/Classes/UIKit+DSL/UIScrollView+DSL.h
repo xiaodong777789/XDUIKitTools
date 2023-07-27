@@ -6,9 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
 @interface UIScrollView (DSL)
 
 ///------------父类属性-----------
@@ -44,11 +42,9 @@
 @property (nonatomic,readonly) UIScrollView *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UIScrollView *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UIScrollView *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UIScrollView *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UIScrollView *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///-----------UIScrollView------------
 @property (nonatomic,readonly) UIScrollView *(^setContentOffset)(CGPoint);               // default CGPointZero

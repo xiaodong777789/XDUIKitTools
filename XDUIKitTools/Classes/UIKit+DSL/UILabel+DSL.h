@@ -6,9 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
 @interface UILabel (DSL)
 
 ///------------父类属性-----------
@@ -44,11 +42,9 @@
 @property (nonatomic,readonly) UILabel *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UILabel *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UILabel *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UILabel *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UILabel *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///-------------UILabel---------------
 /// 设置字体

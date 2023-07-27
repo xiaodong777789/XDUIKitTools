@@ -6,9 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
 @interface UIButton (DSL)
 
 ///------------父类属性-----------
@@ -43,11 +41,9 @@
 @property (nonatomic,readonly) UIButton *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UIButton *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UIButton *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UIButton *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UIButton *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///------------UIControl---------------
 @property (nonatomic,readonly) UIButton *(^setEnabled)(BOOL);

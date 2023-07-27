@@ -6,9 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UICollectionView (DSL)
@@ -45,11 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,readonly) UICollectionView *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UICollectionView *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UICollectionView *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UICollectionView *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UICollectionView *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///-----------UIScrollView------------
 @property (nonatomic,readonly) UICollectionView *(^setContentOffset)(CGPoint);

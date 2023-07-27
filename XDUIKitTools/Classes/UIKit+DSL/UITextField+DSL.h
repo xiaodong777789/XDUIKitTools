@@ -6,9 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
 @interface UITextField (DSL)
 
 ///------------父类属性-----------
@@ -44,11 +42,9 @@
 @property (nonatomic,readonly) UITextField *(^addSwipeGestureRecognizer)(id, SEL,UISwipeGestureRecognizerDirection);
 @property (nonatomic,readonly) UITextField *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 @property (nonatomic,readonly) UITextField *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UITextField *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UITextField *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
 
 ///-------------UITextField----------------
 @property (nonatomic,readonly) UITextField *(^setDelegate)(id<UITextFieldDelegate>);

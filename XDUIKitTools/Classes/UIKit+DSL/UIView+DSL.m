@@ -256,7 +256,6 @@
     };
 }
 
-#if __has_include (<Masonry/Masonry.h>)
 - (UIView *(^)(void (^)(MASConstraintMaker *)))makeConstraint{
     return ^(void (^block)(MASConstraintMaker *)){
         NSAssert(self.superview != nil, @"无法添加约束，请先add到父视图上");
@@ -280,11 +279,9 @@
         return self;
     };
 }
-#endif
 
 @end
 
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/MASConstraint+Private.h>
 
 @implementation MASConstraint (SuperView)
@@ -332,4 +329,3 @@
 }
 
 @end
-#endif

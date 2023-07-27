@@ -6,9 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#if __has_include(<Masonry/Masonry.h>)
 #import <Masonry/Masonry.h>
-#endif
+
 @interface UIView (DSL)
 
 ///添加约束后，需要自身frame计算时需要延迟调用可以再after内调用
@@ -70,18 +69,16 @@
 /// 删除视图所有手势
 @property (nonatomic,readonly) UIView *(^removeGestureRecognizers)(void);
 
-#if __has_include (<Masonry/Masonry.h>)
 ///约束     结合Masonry实现
 ///添加约束后会影响frame操作，用约束修改frame
 ///必须先add到父视图上，在添加约束
 @property (nonatomic,readonly) UIView *(^makeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UIView *(^remakeConstraint)(void (^)(MASConstraintMaker *make));
 @property (nonatomic,readonly) UIView *(^updateConstraint)(void (^)(MASConstraintMaker *make));
-#endif
+
 
 @end
 
-#if __has_include(<Masonry/Masonry.h>)
 ///Masonry相对于父视图的约束
 @interface MASConstraint (SuperView)
 ///相对于父视图的约束 block equal
@@ -89,4 +86,3 @@
 @property (nonatomic,readonly) MASConstraint *(^equalToSuperview)(void);
 @property (nonatomic,readonly) MASConstraint *(^mas_equalToSuperview)(void);
 @end
-#endif
