@@ -130,42 +130,49 @@ static char * kLabelAutoTruncationKey = "labelAutoTruncationKey";
 
 - (UILabel *(^)(CGFloat))setLineSpace{
     return ^(CGFloat space){
-        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:space wordSpace:-1 image:nil atIndex:-1];
+        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:space headIndent:-1 wordSpace:-1 image:nil atIndex:-1];
+        return self;
+    };
+}
+
+- (UILabel *(^)(CGFloat))setHeadIndent{
+    return ^(CGFloat headIndent){
+        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:-1 headIndent:headIndent wordSpace:-1 image:nil atIndex:-1];
         return self;
     };
 }
 
 - (UILabel *(^)(CGFloat))setWordSpace{
     return ^(CGFloat space){
-        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:-1 wordSpace:space image:nil atIndex:-1];
+        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:-1 headIndent:-1 wordSpace:space image:nil atIndex:-1];
         return self;
     };
 }
 
 - (UILabel *(^)(UIImage *,NSInteger))addImageAtIndex{
     return ^(UIImage *img,NSInteger index){
-        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:-1 wordSpace:-1 image:img atIndex:index];
+        [self setAttributeStringWithText:nil replaceColor:nil replaceFont:nil lineSpace:-1 headIndent:-1 wordSpace:-1 image:img atIndex:index];
         return self;
     };
 }
 
 - (UILabel *(^)(NSString *,UIColor *))setAttributeStringWithTextColor{
     return ^(NSString *text,UIColor *color){
-        [self setAttributeStringWithText:text replaceColor:color replaceFont:nil lineSpace:-1 wordSpace:-1 image:nil atIndex:-1];
+        [self setAttributeStringWithText:text replaceColor:color replaceFont:nil lineSpace:-1 headIndent:-1 wordSpace:-1 image:nil atIndex:-1];
         return self;
     };
 }
 
 - (UILabel *(^)(NSString *,UIColor *,UIFont *))setAttributeStringWithTextColorAndFont{
     return ^(NSString *text,UIColor *color,UIFont *font){
-        [self setAttributeStringWithText:text replaceColor:color replaceFont:font lineSpace:-1 wordSpace:-1 image:nil atIndex:-1];
+        [self setAttributeStringWithText:text replaceColor:color replaceFont:font lineSpace:-1 headIndent:-1 wordSpace:-1 image:nil atIndex:-1];
         return self;
     };
 }
 
 
 //添加图片并设置行间距替换文字颜色
-- (void)setAttributeStringWithText:(NSString *)text replaceColor:(UIColor *)color replaceFont:(UIFont *)font lineSpace:(float)lineSpace wordSpace:(float)wordSpace image:(UIImage *)image atIndex:(NSInteger)index
+- (void)setAttributeStringWithText:(NSString *)text replaceColor:(UIColor *)color replaceFont:(UIFont *)font lineSpace:(float)lineSpace headIndent:(float)headIndent wordSpace:(float)wordSpace image:(UIImage *)image atIndex:(NSInteger)index
 {
     NSString *labelText = self.text;
         
@@ -183,9 +190,27 @@ static char * kLabelAutoTruncationKey = "labelAutoTruncationKey";
     
     ///行间距
     if(lineSpace > 0){
-        NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        NSParagraphStyle *defult =  [attributedString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+        if(defult){
+            [paragraphStyle setParagraphStyle:defult];
+        }
+        if(!paragraphStyle)paragraphStyle = NSMutableParagraphStyle.new;
         [paragraphStyle setLineSpacing:lineSpace];
         [paragraphStyle setLineBreakMode:self.lineBreakMode];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:all];
+    }
+    
+    ///缩进
+    if(headIndent > 0){
+        NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        NSParagraphStyle *defult =  [attributedString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+        if(defult){
+            [paragraphStyle setParagraphStyle:defult];
+        }
+        paragraphStyle.firstLineHeadIndent = headIndent; // 首行缩进20点
+        paragraphStyle.headIndent = 0; // 其他行的缩进
+        paragraphStyle.lineBreakMode = self.lineBreakMode;
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:all];
     }
     ///修改部分文字颜色
@@ -208,7 +233,7 @@ static char * kLabelAutoTruncationKey = "labelAutoTruncationKey";
     }
     ///添加图片
     if (image){
-        NSInteger atIndex = 0;
+        NSInteger atIndex = index;
         if(index < 0)atIndex = 0;
         if(index > labelText.length)atIndex = labelText.length;
         NSTextAttachment * attach = [[NSTextAttachment alloc] init];

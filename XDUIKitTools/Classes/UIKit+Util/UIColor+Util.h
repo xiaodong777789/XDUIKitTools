@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, GradientColorDirection) {
 /// - Parameter RGB: 十六进制数值
 /// - Parameter A: 透明度
 @property (nonatomic,readonly,class) UIColor *(^colorWithHexRGBA)(NSInteger,CGFloat);
+
 @property (nonatomic,readonly,class) UIColor *randomColor;
 
 /// 设置渐变色

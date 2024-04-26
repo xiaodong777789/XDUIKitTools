@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Masonry/Masonry.h>
-NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (DSL)
 ///------------父类属性-----------
@@ -78,4 +77,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END

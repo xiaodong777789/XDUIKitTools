@@ -8,7 +8,8 @@
 
 #import "XDViewController.h"
 #import <XDUIKitTools/XDUIKitTools.h>
-@interface XDViewController ()
+
+@interface XDViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -27,6 +28,33 @@
         make.center.equalToSuperview();
         make.size.mas_equalTo(CGSizeMake(200, 200));
     });
+    
+    UITableView *table = self.view.addSubView(UITableView.class);
+    table.setDelegate(self).setDefault().makeConstraint(^(MASConstraintMaker * _Nonnull make) {
+        make.edges.equalToSuperview();
+    });
+    
+}
+
+#pragma mark UITableViewDelegate,UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    if(!cell){
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+    }
+    cell.contentView.setBackgroundColor(UIColor.randomColor);
+    cell.textLabel.text = [NSString stringWithFormat:@"section：%ld，row：%ld",indexPath.section,indexPath.row];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning

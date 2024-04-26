@@ -62,7 +62,9 @@
 /// - ps：default is open = ...展开 close = 收起
 ///     Only the DBLabel works
 @property (nonatomic,readonly) UILabel *(^setTruncation)(UILabelTruncation *);
-
+/// 首行缩进
+/// - Parameter HeadIndent: 行间距
+@property (nonatomic,readonly) UILabel *(^setHeadIndent)(CGFloat);
 /// 设置行间距
 /// - Parameter Space: 行间距
 @property (nonatomic,readonly) UILabel *(^setLineSpace)(CGFloat);

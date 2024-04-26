@@ -107,7 +107,6 @@
 
 @property (nonatomic,readonly) UITextView *(^setLinkTextAttributes)(NSDictionary<NSAttributedStringKey,id> *) API_AVAILABLE(ios(7.0));
 
-
 @property (nonatomic,readonly) UITextView *(^setUsesStandardTextScaling)(BOOL) API_AVAILABLE(ios(13.0));
 
 @property (nonatomic,readonly) UITextView *(^setFindInteractionEnabled)(BOOL) API_AVAILABLE(ios(16.0)) API_UNAVAILABLE(watchos, tvos);
